@@ -18,7 +18,7 @@ spec:
         spec:
             containers:
                 - name: inferencejob
-                  image: yp2141/inferencejob:2.0
+                  image: yp2141/inferencejob:5.0
                   ports:
                       - containerPort: 8000
                   volumeMounts:
