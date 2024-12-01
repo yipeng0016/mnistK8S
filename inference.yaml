@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: inferencejob
+    labels:
+        app: serviceapi
+        tier: backend
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: serviceapi
+    template:
+        metadata:
+            labels:
+                app: serviceapi
+                tier: backend
+        spec:
+            containers:
+                - name: inferencejob
+                  image: yp2141/inferencejob:1.0
+                  ports:
+                      - containerPort: 8000
+                  volumeMounts:
+                  - name: pvc
+                    mountPath: /mnt
+            volumes:
+              - name: pvc
+                persistentVolumeClaim:
+                  claimName: pvc
